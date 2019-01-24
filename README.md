@@ -16,6 +16,13 @@ NAME            TYPE           CLUSTER-IP     EXTERNAL-IP        PORT(S)        
 kubernetes      ClusterIP      10.100.0.1     <none>             443/TCP          57d
 ```
 
+You can also provide AWS credentials directly by providing environment variables to docker
+```bash
+docker run -e CLUSTER=master -e AWS_DEFAULT_REGION=<REGION> \
+    -e AWS_ACCESS_KEY_ID=<ACCESS_KEY_ID> -e AWS_SECRET_ACCESS_KEY=<SECRET_KEY> \
+    maddox/kubectl get pods
+```
+
 ## AWS Credentials
 
 The kubectl wrapper script used by this container uses the AWS CLI to fetch the necessary cluster details for the kube config file (api endpoint, certificate authority etc). 
